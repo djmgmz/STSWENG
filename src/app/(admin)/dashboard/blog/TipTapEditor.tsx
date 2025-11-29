@@ -5,7 +5,6 @@ import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import Strike from "@tiptap/extension-strike";
 import Link from "@tiptap/extension-link";
-import Image from "@tiptap/extension-image";
 import { TextStyle } from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 
@@ -29,7 +28,6 @@ export default function TipTapEditor({
       Link.configure({
         openOnClick: false,
       }),
-      Image,
     ],
     content: value,
     immediatelyRender: false,
@@ -52,12 +50,6 @@ export default function TipTapEditor({
     }
   };
 
-  // Add Image
-  const addImage = () => {
-    const url = prompt("Enter Image URL:");
-    if (url) editor.chain().focus().setImage({ src: url }).run();
-  };
-
   return (
     <div className={styles.editorWrapper}>
       <div className={styles.toolbar}>
@@ -77,8 +69,6 @@ export default function TipTapEditor({
         <button onClick={() => editor.chain().focus().toggleOrderedList().run()} className={editor.isActive("orderedList") ? styles.active : ""}>1. List</button>
 
         <button onClick={setLink}>🔗 Link</button>
-        <button onClick={addImage}>🖼 Image</button>
-
         <button onClick={() => editor.chain().focus().undo().run()}>↶ Undo</button>
         <button onClick={() => editor.chain().focus().redo().run()}>↷ Redo</button>
       </div>

@@ -153,11 +153,11 @@ function BlogCard({
       )}
 
       <div className={styles.blogCardHeader}>
-        <h3>{blog.title}</h3>
+        <h3 style={{ fontWeight: "700" }}>{blog.title}</h3>
       </div>
 
       <p>{blog.content.replace(/<[^>]+>/g, "").slice(0, 100)}...</p>
-      <small>{new Date(blog.date_created).toLocaleDateString()}</small>
+      <small style={{ fontWeight: "600" }}>{new Date(blog.date_created).toLocaleDateString()}</small>
 
       <div className={styles.cardActions}>
         <button onClick={(e) => { e.stopPropagation(); onEdit(blog); }}>Edit</button>

@@ -12,19 +12,22 @@
 }
 
 .modal {
-    background: white;
+    background: var(--warm-white);
     width: 650px;
     max-height: 90vh;
     padding: 20px;
     border-radius: 10px;
     overflow-y: auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    border: 2px solid var(--primary-maroon);
+    box-shadow: 0 6px 20px var(--shadow-dark);
 }
 
 .label {
     margin-top: 10px;
-    font-weight: bold;
+    font-weight: 600;
     display: block;
+    color: var(--primary-maroon);
 }
 
 .input {
@@ -32,7 +35,15 @@
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
+    background: var(--light-gray);
+    color: var(--dark-gray);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary-maroon);
+    box-shadow: 0 0 5px var(--shadow-light);
 }
 
 .editor {
@@ -46,29 +57,42 @@
     gap: 10px;
 }
 
+/* Cancel Button */
 .cancelButton {
-    background: #b3b3b3;
-    border: none;
+    background: var(--medium-gray);
+    color: var(--dark-gray);
+    border: 1px solid var(--border-color);
     padding: 8px 15px;
     border-radius: 6px;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
+.cancelButton:hover {
+    background: var(--border-color);
+}
+
+/* Save Button */
 .saveButton {
-    background: #116530;
-    color: white;
+    background: var(--primary-maroon);
+    color: var(--warm-white);
     border: none;
     padding: 8px 15px;
     border-radius: 6px;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
+.saveButton:hover {
+    background: var(--dark-maroon);
+}
+
+/* Preview Image */
 .previewImage {
-  width: 100%;
-  max-height: 250px;
-  object-fit: cover;
-  margin-top: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--primary-maroon);
 }
-

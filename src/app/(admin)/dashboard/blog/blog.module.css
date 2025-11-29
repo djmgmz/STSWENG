@@ -51,25 +51,71 @@
 }
 
 .blogCard {
-  padding: 15px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: var(--warm-white);
+  border: 2px solid var(--primary-maroon);
+  border-radius: 5px;
+  padding: 16px;
   cursor: pointer;
+  box-shadow: 0 2px 6px var(--shadow-light);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blogCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--dark-maroon);
+  box-shadow: 0 6px 12px var(--shadow-medium);
 }
 
 .blogCardHeader {
   display: flex;
+  font-weight: 700;
   justify-content: space-between;
   align-items: center;
 }
 
+.blogCard small {
+  font-weight: 600; /* Bold date */
+  color: var(--dark-gray);
+}
+
+.cardActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 .cardActions button {
-  margin-right: 5px;
-  padding: 5px 10px;
-  border: none;
+  padding: 8px 14px;
   border-radius: 6px;
+  border: 2px solid transparent;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.25s ease;
+  color: var(--warm-white);
+  box-shadow: 0 2px 6px var(--shadow-light);
+}
+
+/* Edit */
+.cardActions button:first-child {
+  background: var(--primary-maroon);
+}
+
+.cardActions button:first-child:hover {
+  background: var(--dark-maroon);
+  box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+/* Delete */
+.cardActions button:last-child {
+  background: var(--primary-maroon);
+}
+
+.cardActions button:last-child:hover {
+  background: var(--danger-red);
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.25);
 }
 
 .cardImage {
