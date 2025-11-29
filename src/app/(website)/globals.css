@@ -752,6 +752,21 @@ body {
   text-decoration: underline;
 }
 
+.blog-post-row {
+  border: 2px solid var(--primary-maroon);
+  border-radius: 6px;
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(93, 46, 46, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.blog-post-row:hover {
+  border-color: var(--dark-maroon);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(93, 46, 46, 0.4);
+}
+
 /* Payment Method Styles */
 .payment-method-btn {
   padding: 1rem 2rem;

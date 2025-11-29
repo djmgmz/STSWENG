@@ -27,6 +27,10 @@ const sidebarSections = [
             { id: "livelihood", label: "Livelihood" },
         ],
     },
+    {
+        title: "BLOGGING",
+        items: [{ id: "blog", label: "Blog" }],
+    },
 ];
 
 export default function Sidebar() {
