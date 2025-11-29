@@ -1,4 +1,5 @@
 import "./globals.css";
+import "react-quill/dist/quill.snow.css";
 import { Providers } from "./providers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";

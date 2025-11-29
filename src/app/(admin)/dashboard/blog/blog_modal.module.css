@@ -1,0 +1,74 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: white;
+    width: 650px;
+    max-height: 90vh;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.label {
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.editor {
+    height: 230px;
+    margin-bottom: 15px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancelButton {
+    background: #b3b3b3;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.saveButton {
+    background: #116530;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.previewImage {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+

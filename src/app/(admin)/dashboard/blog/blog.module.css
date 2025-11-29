@@ -1,0 +1,81 @@
+.BlogTab {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.addButton {
+  background-color: #116530;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.sortSelect {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.blogCard {
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.blogCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardActions button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cardImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
