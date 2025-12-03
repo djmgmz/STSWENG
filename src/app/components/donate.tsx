@@ -2,37 +2,43 @@
 
 import { useState } from 'react';
 
-export default function Donate() {
+interface DonateProps {
+  gcashNumber: string;
+  bankDetails: string;
+  otherDetails: string;
+}
+
+export default function Donate({ gcashNumber, bankDetails, otherDetails }: DonateProps) {
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
 
+  // Re-construct the array using the props passed from the database
   const paymentMethods = [
     {
       name: "GCash",
       instructions: [
         "1. Open your GCash app",
         "2. Tap 'Send Money'",
-        "3. Enter our GCash number: 0917-123-4567",
+        `3. Enter our GCash number: ${gcashNumber || "0917-XXX-XXXX"}`,
         "4. Enter your donation amount",
         "5. Add your name in the message (optional)",
-        "6. Complete the transaction",
-        "would probably add a qr option if ever"
+        "6. Complete the transaction"
       ],
-      details: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+      details: "Thank you for your generosity!"
     },
     {
       name: "Bank Transfer", 
       instructions: [
         "1. Go to your bank's mobile app or website",
-        "2. Lorem ipsum dolor sit amet consectetur adipiscing elit."
+        "2. Use the account details below to transfer funds."
       ],
-      details: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+      details: bankDetails || "Bank details available upon request."
     },
     {
       name: "Others",
       instructions: [
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+        "Please contact us directly for other donation methods."
       ],
-      details: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+      details: otherDetails || "Contact us for more info."
     }
   ];
 
