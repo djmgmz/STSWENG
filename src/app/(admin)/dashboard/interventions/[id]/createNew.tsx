@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./createNew.module.css";
 import { useParams } from "next/navigation";
-import SearchableDropdown from "@/app/dashboard/components/SearchableDropdown";
+import SearchableDropdown from "@/app/(admin)/dashboard/components/SearchableDropdown";
 import { useDashboardData } from "@/utils/DashboardContext";
 import { saveMember } from "@/lib/api/members";
 import useSWR, { mutate } from "swr";

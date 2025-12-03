@@ -5,6 +5,7 @@ import { useDashboardData } from "@/utils/DashboardContext";
 import { mutate } from "swr";
 import { Donation } from "@/types/donations";
 import { saveDonation, deleteDonation } from "@/lib/api/donations";
+import SectionExportButton from "@/app/components/SectionExportButton";
 
 const initialDonation: Donation = {
   date: "",
@@ -333,6 +334,7 @@ const isBelowMax =
     <div className={styles.donationsPage}>
       <div className={styles.header}>
         <h1 className={styles.pageTitle}>Donations</h1>
+        <SectionExportButton type="donations" label="Export CSV" />
       </div>
 
       <div className={styles.filtersContainer}>

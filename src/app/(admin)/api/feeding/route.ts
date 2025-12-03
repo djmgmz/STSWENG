@@ -5,6 +5,10 @@ import dbConnect from "@/lib/mongoose";
 import Feeding_program from "@/lib/models/feeding/feeding_program";
 import mongoose from "mongoose";
 
+import "@/lib/models/households/member";
+
+import "@/lib/models/feeding/feeding_child";
+
 export async function GET() {
     try {
         await dbConnect();

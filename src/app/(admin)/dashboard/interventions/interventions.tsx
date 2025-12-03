@@ -8,6 +8,7 @@ import InterventionModal from "./addIntervention";
 import { saveIntervention, deleteIntervention } from "@/lib/api/interventions";
 import { Intervention } from "@/types/interventions";
 import { useUser } from "@/utils/UserContext";
+import SectionExportButton from "@/app/components/SectionExportButton";
 
 const initialIntervention: Intervention = {
   name: "",
@@ -397,6 +398,7 @@ export default function InterventionTab() {
     <div className={styles.InterventionTab}>
       <div className={styles.header}>
         <h1 className={styles.heading}>Interventions</h1>
+        <SectionExportButton type="interventions" label="Export CSV" />
       </div>
 
       <div className={styles.filtersContainer}>

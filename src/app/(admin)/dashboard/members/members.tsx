@@ -8,6 +8,7 @@ import { Member } from "@/types/members";
 import { Household } from "@/types/households";
 import MemberModal from "./createNew";
 import { unique } from "next/dist/build/utils";
+import SectionExportButton from "@/app/components/SectionExportButton";
 
 export const initialMember: Member = {
     last_name: "",
@@ -248,6 +249,7 @@ export default function MembersTab() {
         <section className={styles.pageSection}>
             <div className={styles.header}>
                 <h2 className={styles.pageTitle}>Members</h2>
+                <SectionExportButton type="members" label="Export CSV" />
             </div>
 
             <div className={styles.filtersContainer}>

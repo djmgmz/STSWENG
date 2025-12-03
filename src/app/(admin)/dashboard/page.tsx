@@ -1,25 +1,20 @@
-// src/app/dashboard/page.tsx
+// src/app/(admin)/dashboard/page.tsx
 
 import AdminExportButton from "@/app/components/AdminExportButton";
 import InterventionReports from "./reports/intervention_reports";
 
 export default async function DashboardPage() {
-    
-    // No session or role check - the button will be shown to everyone.
-
     return (
-        <div>
-            {/* This is the component you already have */}
-            <InterventionReports />
-
-            {/* This section will now be visible to all logged-in users */}
-            <section className="mt-8 pt-8 border-t border-gray-200">
-                <h2 className="text-xl font-semibold mb-2">Admin Controls</h2>
-                <p className="mb-4">
-                    Download a complete JSON snapshot of all application data.
-                </p>
+        <div className="space-y-4">
+            {/* Flex container to align the button to the right.
+               This places it neatly above the reports without the extra text.
+            */}
+            <div className="flex justify-end items-center pt-4 pr-4">
                 <AdminExportButton />
-            </section>
+            </div>
+
+            {/* The Reports Section */}
+            <InterventionReports />
         </div>
     );
 }
