@@ -5,7 +5,6 @@ export default function Header() {
         <div className="container">
           <div className="nav-content">
             <div className="logo">
-              {/* Logo Image */}
               <img 
                 src="/images/logo.png" 
                 alt="SFJ LOGO" 
@@ -13,14 +12,21 @@ export default function Header() {
               />
               <h1>SYNAGOGUE FOR JESUS</h1>
             </div>
-            <ul className="nav-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/impact">What We Do</a></li>
-              <li><a href="/blog">Our Stories</a></li>
-              <li><a href="/prog">Programs</a></li>
-              <li><a href="/donate" className="btn btn-primary">Donate Now</a></li>
-            </ul>
+            <div className="nav-main">
+              <ul className="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/impact">What We Do</a></li>
+                <li><a href="/blog">Our Stories</a></li>
+                <li><a href="/prog">Programs</a></li>
+              </ul>
+              <div className="nav-actions">
+                <a href="/donate" className="btn btn-primary">Donate Now</a>
+                <div className="auth-links">
+                  <a href="/login">Log In</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
