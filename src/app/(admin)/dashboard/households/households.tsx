@@ -7,6 +7,7 @@ import { deleteHousehold } from "@/lib/api/households";
 import { Household } from "@/types/households";
 import HouseholdModal from "./createNew";
 import { unique } from "next/dist/build/utils";
+import SectionExportButton from "@/app/components/SectionExportButton";
 
 const initialHousehold: Household = {
     name: "",
@@ -228,6 +229,7 @@ export default function HouseholdsTab() {
         <section className={styles.pageSection}>
             <div className={styles.header}>
                 <h2 className={styles.pageTitle}>Households</h2>
+                <SectionExportButton type="households" label="Export CSV" />
             </div>
 
             <div className={styles.filtersContainer}>

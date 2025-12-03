@@ -9,6 +9,7 @@ import ViewLivelihood from "./viewLivelihood"; // Import your ViewLivelihood com
 import { saveLivelihood, deleteLivelihood } from "@/lib/api/livelihoods";
 import { Livelihood } from "@/types/livelihoods";
 import { Transaction } from "@/types/transactions";
+import SectionExportButton from "@/app/components/SectionExportButton";
 
 const initialLivelihood: Livelihood = {
   name: "",
@@ -187,6 +188,7 @@ export default function LivelihoodTab() {
       <div className={styles.header}>
 
         <h1 className={styles.heading}>Livelihood</h1>
+        <SectionExportButton type="livelihoods" label="Export CSV" />
 </div>
 
 

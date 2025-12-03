@@ -7,6 +7,7 @@ import { mutate } from "swr";
 import { useRouter } from "next/navigation";
 import FeedingModal from "./feeding_modal";
 import { saveFeedingProgram, deleteFeedingProgram } from "@/lib/api/feedings";
+import SectionExportButton from "@/app/components/SectionExportButton";
 
 const SORT_OPTIONS = [
     { value: "date_started_desc", label: "Start Date (Newest)" },
@@ -50,7 +51,7 @@ export default function FeedingTab() {
     // Apply filters and sorting
     const filteredAndSortedFeedings = useMemo(() => {
         // Apply localPinnedState overrides to original feedings
-        const locallyUpdatedFeedings = feedings.map((program) => ({
+        const locallyUpdatedFeedings = (Array.isArray(feedings) ? feedings : []).map((program) => ({
             ...program,
             pinned: localPinnedState[program._id!] ?? program.pinned,
         }));
@@ -216,10 +217,12 @@ export default function FeedingTab() {
         };
     }
 
-    const programsWithLocalPin = feedings.map((p) => ({
-        ...p,
-        pinned: localPinnedState[p._id!] ?? p.pinned,
-    }));
+    console.log("DEBUG FEEDINGS:", feedings);
+
+    const programsWithLocalPin = (Array.isArray(feedings) ? feedings : []).map((p) => ({
+    ...p,
+    pinned: localPinnedState[p._id!] ?? p.pinned,
+}));
 
     function resetModalState() {
         setIsModalOpen(false);
@@ -378,6 +381,7 @@ export default function FeedingTab() {
         <div className={styles.feedingTab}>
             <div className={styles.header}>
                 <h1 className={styles.heading}>Feeding</h1>
+                <SectionExportButton type="feeding" label="Export CSV" />
             </div>
 
             <div className={styles.filtersContainer}>
@@ -452,7 +456,7 @@ export default function FeedingTab() {
 
             <div className={styles.headerActions}>
                 <div className={styles.resultsInfo}>
-                    Showing {filteredAndSortedFeedings.length} of {feedings.length} programs
+                    Showing {filteredAndSortedFeedings.length} of {Array.isArray(feedings) ? feedings.length : 0} programs
                 </div>
                 <button
                     onClick={() => {
