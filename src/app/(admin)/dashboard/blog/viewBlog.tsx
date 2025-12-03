@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import styles from "./viewBlog.module.css";
 import { Blog } from "@/types/blogs";
 
@@ -17,7 +18,16 @@ export default function ViewBlog({ isOpen, onClose, blog }: ViewBlogProps) {
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         
         {blog.imageUrl && (
-          <img src={blog.imageUrl} alt={blog.title} className={styles.headerImage} />
+          <div className={styles.imageContainer}>
+            <Image
+              src={blog.imageUrl}
+              alt={blog.title}
+              width={800}
+              height={450}
+              className={styles.headerImage}
+              priority
+            />
+          </div>
         )}
 
         <h1 className={styles.title}>{blog.title}</h1>

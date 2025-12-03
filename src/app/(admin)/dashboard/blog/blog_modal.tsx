@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./blog_modal.module.css";
 import { Blog } from "@/types/blogs";
 import { saveBlog, updateBlog } from "@/lib/api/blogs";
 import TipTapEditor from "./TipTapEditor";
 import { mutate } from "swr";
+import Image from "next/image";
+import { ImageIcon } from "lucide-react";
 
 interface BlogModalProps {
     isOpen: boolean;
@@ -17,12 +19,52 @@ interface BlogModalProps {
 export default function BlogModal({ isOpen, onClose, blog, isAdd }: BlogModalProps) {
     const [formData, setFormData] = useState<Blog>(blog);
     const [loading, setLoading] = useState(false);
+    const [uploading, setUploading] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         setFormData(blog);
     }, [blog]);
 
     if (!isOpen) return null;
+
+    const handleImageUpload = async (file: File) => {
+        if (!file) return;
+
+        setUploading(true);
+        const formData = new FormData();
+        formData.append('image', file);
+
+        try {
+            const response = await fetch('/api/upload-image', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error('Upload failed');
+            }
+
+            const data = await response.json();
+            setFormData(prev => ({ ...prev, imageUrl: data.url }));
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            alert('Error uploading image');
+        } finally {
+            setUploading(false);
+        }
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            handleImageUpload(file);
+        }
+    };
+
+    const triggerFileInput = () => {
+        fileInputRef.current?.click();
+    };
 
     const handleSave = async () => {
         if (!formData.title.trim() || !formData.content.trim()) {
@@ -36,7 +78,6 @@ export default function BlogModal({ isOpen, onClose, blog, isAdd }: BlogModalPro
                 await saveBlog({
                     ...formData,
                     date_created: new Date().toISOString(),
-                    imageUrl: "", // ensure no image is passed
                 });
             } else {
                 await updateBlog(formData._id!, formData);
@@ -66,6 +107,45 @@ export default function BlogModal({ isOpen, onClose, blog, isAdd }: BlogModalPro
                     className={styles.input}
                     placeholder="Enter blog title"
                 />
+
+                {/* Image Upload */}
+                <div className={styles.uploadSection}>
+                    <label className={styles.label}>Featured Image</label>
+                    <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                    />
+                    {formData.imageUrl ? (
+                        <div className={styles.imagePreview}>
+                            <Image
+                                src={formData.imageUrl}
+                                alt="Blog preview"
+                                width={300}
+                                height={200}
+                                className={styles.uploadedImage}
+                            />
+                            <button 
+                                type="button" 
+                                onClick={triggerFileInput}
+                                className={styles.changeImageButton}
+                                disabled={uploading}
+                            >
+                                {uploading ? 'Uploading...' : 'Change Image'}
+                            </button>
+                        </div>
+                    ) : (
+                        <div 
+                            className={styles.uploadArea}
+                            onClick={triggerFileInput}
+                        >
+                            <ImageIcon className={styles.uploadIcon} />
+                            <p>{uploading ? 'Uploading...' : 'Click to upload an image'}</p>
+                        </div>
+                    )}
+                </div>
 
                 {/* Content Editor */}
                 <label className={styles.label}>Content</label>
