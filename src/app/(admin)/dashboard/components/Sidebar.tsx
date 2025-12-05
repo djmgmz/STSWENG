@@ -17,7 +17,7 @@ const sidebarSections = [
             { id: "households", label: "Household" },
             { id: "members", label: "Members" },
             { id: "donations", label: "Donations" },
-        ],
+        ],  
     },
     {
         title: "PROGRAMS",
@@ -30,6 +30,13 @@ const sidebarSections = [
     {
         title: "BLOGGING",
         items: [{ id: "blog", label: "Blog" }],
+    },
+    {
+        title: "SETTINGS",
+        items: [{ id: "site-editor", label: "Site Editor" },
+                { id: "programs", label: "Manage Programs" },
+        ],
+        
     },
 ];
 
